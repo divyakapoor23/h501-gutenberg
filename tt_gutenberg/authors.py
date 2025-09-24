@@ -65,6 +65,7 @@ def get_author_translation_stats(metadata: Optional[pd.DataFrame] = None,
     if "gutenberg_author_id" in auth.columns or "author" in auth.columns:
         auth = auth.rename(columns={"gutenberg_author_id": "author_id", "author": "author_name"})
 
+    # Determine the correct gutenberg_id column name
     gid = "gutenberg_id" if "gutenberg_id" in meta.columns else None
     # Count unique translation languages per author if possible 
     if gid and gid in languages.columns and "author_id" in meta.columns:
